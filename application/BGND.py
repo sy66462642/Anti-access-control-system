@@ -1,9 +1,6 @@
-from flask import Flask,jsonify
-from flask_sqlalchemy import SQLAlchemy
+from application import Config
 
-import Config
-import model
-app=Config.create_app()
+app= Config.create_app()
 
 
 

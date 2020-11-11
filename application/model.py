@@ -1,8 +1,7 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import Config
+from application import Config
 
-app=Config.create_app()
+app= Config.create_app()
 db = SQLAlchemy(app)
 
 class students(db.Model):

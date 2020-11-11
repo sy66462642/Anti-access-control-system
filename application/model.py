@@ -27,7 +27,8 @@ class students(db.Model):
         self.selfie = selfie
         self.reason_for_out = reason_for_out
 
-        db.create_all()
+    def __repr__(self):
+       return '<Student_id:%r>' % self.id
 
 
 

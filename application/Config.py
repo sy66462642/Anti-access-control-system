@@ -1,9 +1,20 @@
 from flask import Flask
+from application.DB import db
 import os
 
+app = Flask('Anti access control system', template_folder='templetes', static_folder='static',static_url_path='../static')
 
-def create_app(port=5000, ip='127.0.0.1', debug=False):
-    app = Flask('Anti access control system', template_folder='templetes', static_folder='static', static_url_path='../static')
-    app.config['SQLALCHEMY_DATABASE_URI'] = ""
-    app.run(debug=debug, port=port, host=ip)
-    return app
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
+
+app.secret_key = "lalskskskskksksjsj"
+
+db.init_app(app)
+
+db.create_all()
+
+app.register_blueprint(login_page)
+app.register_blueprint(regist_page)
+app.register_blueprint(show_in_info_page)
+app.register_blueprint(show_out_info_page)
+

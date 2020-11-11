@@ -1,8 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
+from application.DB import db
 from application import Config
-
-app= Config.create_app()
-db = SQLAlchemy(app)
 
 class students(db.Model):
     id = db.Column('student_id', db.Integer, primary_key=True)
@@ -14,10 +11,11 @@ class students(db.Model):
     department = db.Column(db.String(40))
     selfie = db.Column(db.String(100))
     reason_for_out = db.Column(db.String(100))
+    status=db.Column(db.Integer)
 
     # 照片上传后实现加密处理
 
-    def __init__(self, id, password, name, gender, age, department, selfie, reason_for_out):
+    def __init__(self, id, password, name, gender, age, department, selfie, reason_for_out,status):
         self.id = id  # 邀请码
         self.name = name
         self.password = password
@@ -26,6 +24,7 @@ class students(db.Model):
         self.department = department
         self.selfie = selfie
         self.reason_for_out = reason_for_out
+        self.status=status
 
     def __repr__(self):
        return '<Student_id:%r>' % self.id

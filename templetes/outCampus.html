@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <!-- saved from url=(0105)https://my.stu.edu.cn/health-report/validate-stu-user-cas-out;jsessionid=B1DE019431616895C68D1F713281D873 -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>验证结果</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css"  media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
     
     <meta name="viewport" content="width=device-width, initial-scale=0.9,user-scalable=0">
-    <title>验证结果</title>
     <style type="text/css">
 		div{
 			line-height:50px;
@@ -17,9 +25,23 @@
             el.src=el.src+"?t="+new Date().getTime();*/
         }
 
+        function onloadTime() {
+            window.setInterval('showRealtime()')
+        }
+
+        function showRealtime() {
+            var d = new Date();
+            var month = d.getMonth()+1;
+            var date = d.getDate();
+            var hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
+            var min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
+            var now = month + "月" + date + "日 " + hour + ":" + min;
+            clock.innerHTML = now;
+        }
+
     </script>
 </head>
-<body style="margin:20px auto;width:90%" onload="reloadImg()">
+<body style="margin:20px auto;width:90%" onload="onloadTime()">
 <div>您的出校验证结果</div>
 
 <div style="color:#00AA00;">
@@ -32,7 +54,7 @@
     <br><img src="./验证结果_files/right.jpg" style="width: 150px">
   <!--  <br/>当前时间：<span></span>-->
 </div>
-<div style="font-size: 20px">当前时间是：<span>11月07日 22:52</span></div>
+<div style="font-size: 20px">当前时间是：<span id="clock"></span></div>
 
 
 </body></html>

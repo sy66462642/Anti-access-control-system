@@ -13,13 +13,27 @@
 	</style>
     <script type="text/javascript">
         function reloadImg() {
-            /*var el=document.getElementById("headerPhoto");
-            el.src=el.src+"?t="+new Date().getTime();*/
+            var el=document.getElementById("headerPhoto");
+            el.src=el.src+"?t="+new Date().getTime();
+        }
+
+        function onloadTime() {
+            window.setInterval('showRealtime()')
+        }
+
+        function showRealtime() {
+            var d = new Date();
+            var month = d.getMonth()+1;
+            var date = d.getDate();
+            var hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
+            var min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
+            var now = month + "月" + date + "日 " + hour + ":" + min;
+            clock.innerHTML = now;
         }
 
     </script>
 </head>
-<body style="margin:20px auto;width:90%" onload="reloadImg()">
+<body style="margin:20px auto;width:90%" onload="onloadTime()">
 <div>您的进入校园验证结果</div>
 
 <div style="color:#00AA00;">
@@ -34,7 +48,7 @@
     <br><img src="./验证结果（进校）_files/right.jpg" style="width: 150px">
   <!--  <br/>当前时间：<span></span>-->
 </div>
-<div style="font-size: 20px">当前时间是：<span>11月07日 22:54</span></div>
+<div style="font-size: 20px">当前时间是：<span id="clock"></span></div>
 
 
 

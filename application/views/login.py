@@ -23,7 +23,9 @@ def login():
             checkout=item.status
             if checkout==0:
                 res = students.query.filter(students.id == id).update({"status": "1"})
-
                 return render_template('/inCampus.html')
+            else:
+                res=students.query.filter(students.id == id).update({"status": "1"})
+                return render_template('/outCampus.html')
         else:
             return render_template('/login.html')

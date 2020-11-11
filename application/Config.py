@@ -1,5 +1,7 @@
 from flask import Flask
 from application.DB import db
+from application.views.login import login_page
+
 import os
 
 app = Flask('Anti access control system', template_folder='templetes', static_folder='static',static_url_path='../static')

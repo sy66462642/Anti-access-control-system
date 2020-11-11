@@ -16,7 +16,7 @@ class students(db.Model):
     # 照片上传后实现加密处理
 
     def __init__(self, id, password, name, gender, age, department, selfie, reason_for_out,status):
-        self.id = id  # 邀请码
+        self.id = id  # 登录码
         self.name = name
         self.password = password
         self.gender = gender
@@ -29,5 +29,16 @@ class students(db.Model):
     def __repr__(self):
        return '<Student_id:%r>' % self.id
 
+class code(db.model):
+    __tablename__ = "codes"
+    code = db.Column('code', db.String(16), primary_key=True)
+    id=db.Column('id',db.Integer)
+
+    def __init(self,code,id):
+        self.code=code
+        self.id=id
+
+    def __repr__(self):
+        return '<code:%r>' % self.code
 
 

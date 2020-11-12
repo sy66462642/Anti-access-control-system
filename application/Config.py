@@ -3,7 +3,7 @@ from application.DB import db
 from application.views.login import login_page
 from application.views.regist import regist_page
 from application.views.show_info import show_info_page
-
+from application.views.code_check import code_check_page
 import os
 
 app = Flask('Anti access control system', template_folder='templetes', static_folder='static',static_url_path='../static')
@@ -20,5 +20,6 @@ db.create_all()
 app.register_blueprint(login_page)
 app.register_blueprint(regist_page)
 app.register_blueprint(show_info_page)
+app.register_blueprint(code_check_page)
 
 

@@ -37,15 +37,15 @@
 <div>您的进入校园验证结果</div>
 
 <div style="color:#00AA00;">
-	<div><img id="headerPhoto" style="max-width:150px" src="./验证结果（进校）_files/2e8b509459143cc796fd2fd4533b3536"></div>
-    <span>孙巍</span><!--，<span th:text="${user.gender}"></span>，<span th:text="${user.age}"></span>岁-->
+	<div><img id="headerPhoto" style="max-width:150px" src=""></div>
+    <span>{{user_name}}，</span><span>{{user_gender}}，</span><span>{{user_department}}岁</span>
     <br>
-    部门：<span>理学院</span>
+    部门：<span>{{user_department}}</span>
 
     <br>
     <div if="${reason!=null}" style="color:black">原因:<span>申请外出后回来</span></div>
     <span>您可以进校</span>
-    <br><img src="./验证结果（进校）_files/right.jpg" style="width: 150px">
+    <br><img src="../static/icon/correct.jpg" style="width: 150px">
   <!--  <br/>当前时间：<span></span>-->
 </div>
 <div style="font-size: 20px">当前时间是：<span id="clock"></span></div>

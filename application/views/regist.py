@@ -29,8 +29,8 @@ def regist():
         age = request.form.get('age')
         department = request.form.get('department')
         photo = request.files.get('photo')
-        path = "..\static\pictures"
-        file_name = path + str(id) + '.jpg'
+        path = "static\photos"
+        file_name = path + '/' + str(id) + '.jpg'
         photo.save(file_name)
         ST = students(id, pwd, name, gender, age, department, file_name, "  ", 0)
         db.session.add(ST)

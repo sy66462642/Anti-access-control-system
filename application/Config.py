@@ -1,6 +1,8 @@
 from flask import Flask
 from application.DB import db
 from application.views.login import login_page
+from application.views.regist import regist_page
+from application.views.show_info import show_info_page
 
 import os
 
@@ -17,6 +19,6 @@ db.create_all()
 
 app.register_blueprint(login_page)
 app.register_blueprint(regist_page)
-app.register_blueprint(show_in_info_page)
-app.register_blueprint(show_out_info_page)
+app.register_blueprint(show_info_page)
+
 

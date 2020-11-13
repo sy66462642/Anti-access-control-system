@@ -22,4 +22,7 @@ app.register_blueprint(regist_page)
 app.register_blueprint(show_info_page)
 app.register_blueprint(code_check_page)
 
+if __name__=='main':
+    app.run()
+
 

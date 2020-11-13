@@ -1,5 +1,6 @@
 from flask import *
 from ..model import students
+from sqlalchemy.exc import *
 from sqlalchemy.orm import sessionmaker
 from ..DB import db
 
@@ -32,7 +33,10 @@ def regist():
         path = "static\photos"
         file_name = path + '/' + str(id) + '.jpg'
         photo.save(file_name)
-        ST = students(id, pwd, name, gender, age, department, file_name, "  ", 0)
-        db.session.add(ST)
-        db.session.commit()
-    return render_template('/codeCheck.html')
+        ST = students(id, pwd, name, gender, age, department, file_name, 0)
+        try:
+            db.session.add(ST)
+            db.session.commit()
+        except SQLAlchemyError:
+            return render_template('/regist.html')
+    return render_template('/.html')

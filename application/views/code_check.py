@@ -21,14 +21,14 @@ def check_code():
         user_code=user.code
         status=user.status
         if user_code == code:
-            code.query.filter_by(code.id==id).update('proof_num':'20')
+            code.query.filter_by(code.id==id).update({'proof_num':'10'})
             return render_template('/')
         else:
             if status==0:
-                students.query.filter_by(students.id==id).update('status':'1')
+                students.query.filter_by(students.id==id).update({'status':'1'})
                 return render_template('/inCampus.html')
             else:
-                students.query.filter_by(students.id==id).update('status':'0')
+                students.query.filter_by(students.id==id).update({'status':'0'})
                 return render_template('/outCampus.html')
 
     return render_template('/regist.html')

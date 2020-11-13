@@ -6,7 +6,7 @@ from ..DB import db
 code_check_page = Blueprint('codeCheck_page', __name__)
 
 
-@code_check_page.route('/codeCheck', method=['get', 'post'])
+@code_check_page.route('/codeCheck', methods=['get', 'post'])
 def check_code():
     if request.method == 'GET':
         print('get_arrive')

@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 show_info_page = Blueprint('show_info_page', __name__)
 
 
-@show_info_page.route('show_in_info', method=['get', 'post'])
+@show_info_page.route('/show_in_info', methods=['get', 'post'])
 def show_in_info():
     if request.method == 'GET':
         print('get_arrive')
@@ -22,7 +22,7 @@ def show_in_info():
                                user_department=user_department, user_photo=user_photo)
 
 
-@show_info_page.route('show_in_info', method=['get', 'post'])
+@show_info_page.route('/show_out_info', methods=['get', 'post'])
 def show_out_info():
     if request.method == 'GET':
         print('get_arrive')

@@ -1,13 +1,14 @@
 from application.DB import db
-from application import Config
+
 
 
 class students(db.Model):
+    __table_args__ = {"useexisting": True}
     id = db.Column('student_id', db.Integer, primary_key=True)
-    __tablename__ = "users"
+    __tablename__ = "students"
     password = db.Column(db.String(16))
-    name = db.Culumn(db.String(10))
-    gender = db.Culumn(db.String(10))
+    name = db.Column(db.String(10))
+    gender = db.Column(db.String(10))
     age = db.Column(db.Integer)
     department = db.Column(db.String(40))
     selfie = db.Column(db.String(100))
@@ -29,7 +30,8 @@ class students(db.Model):
         return '<Student_id:%r>' % self.id
 
 
-class code(db.model):
+class code(db.Model):
+    __table_args__ = {"useexisting": True}
     __tablename__ = "codes"
     id = db.Column('id', db.Integer, primary_key=True)
     code = db.Column('code', db.String(16))

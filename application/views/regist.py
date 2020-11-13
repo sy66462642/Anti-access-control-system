@@ -7,16 +7,8 @@ from ..DB import db
 regist_page = Blueprint('regist_page', __name__)
 
 
-@regist_page.route('/codeCheck', method=['get', 'post'])
-def check_code():
-    if request.method == 'GET':
-        print('get_arrive')
-        return render_template('/codecheck.html')
 
-    return render_template('/regist.html')
-
-
-@regist_page.route('/regist', method=['get', 'post'])
+@regist_page.route('/regist', methods=['get', 'post'])
 def regist():
     if request.method == 'GET':
         print('get_arrive')

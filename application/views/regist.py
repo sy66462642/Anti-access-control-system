@@ -21,9 +21,10 @@ def regist():
         name = request.form.get('name')
         age = request.form.get('age')
         department = request.form.get('department')
-        photo = request.files['photo']
-        print(photo.filename)
-        path = "static\photos"
+        photo = request.files.get('file')
+        print(type(photo))
+        print(photo.name)
+        path = "static/photos"
         file_name = path + '/' + str(id) + '.jpg'
         photo.save(file_name)
         ST = students(id, pwd, name, gender, age, department, file_name, 0)
@@ -32,4 +33,4 @@ def regist():
             db.session.commit()
         except SQLAlchemyError:
             return render_template('/regist.html')
-    return render_template('/.html')
+    return render_template('/login.html')

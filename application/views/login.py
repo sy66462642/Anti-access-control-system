@@ -10,7 +10,7 @@ login_page = Blueprint('login_page', __name__)
 def login():
     if request.method == 'GET':
         print('get_arrive')
-        return render_template('/.html')
+        return render_template('/login.html')
     else:
         print('post_arrive')
         id = request.form.get('id')
@@ -36,4 +36,4 @@ def login():
                     db.session.commit()
                     return render_template("/inCampus.html")
         else:
-            return render_template('/.html')
+            return render_template('/login.html')

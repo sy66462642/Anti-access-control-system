@@ -21,7 +21,8 @@ def regist():
         name = request.form.get('name')
         age = request.form.get('age')
         department = request.form.get('department')
-        photo = request.files.get('photo')
+        photo = request.files['photo']
+        print(photo.filename)
         path = "static\photos"
         file_name = path + '/' + str(id) + '.jpg'
         photo.save(file_name)

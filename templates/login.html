@@ -11,15 +11,15 @@
 <div class="login layui-anim layui-anim-up">
     <div class="message">用户登录</div>
     <div id="darkbannerwrap"></div>
-    <form method="post" class="layui-form" >
+    <form method="post" class="layui-form" action="/">
         <input type="text" id="username" name="username" placeholder="用户名" lay-verify="required" class="layui-input">
         <hr class="hr15">
         <input type="password" id="password" name="password" placeholder="密码" lay-verify="required" class="layui-input">
         <hr class="hr15">
         <hr class="hr10" >
+        <input value="登录" lay-submit lay-filter="login" id="submit" type="submit">
     </form>
-    <input value="登录" lay-submit lay-filter="login" id="submit" type="button">
-
+    <input value="注册" lay-submit lay-filter="login" id="register" type="submit" onclick="window.location.href='/regist'">
 </div>
 </body>
 </html>

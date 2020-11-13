@@ -4,6 +4,7 @@ from application.views.login import login_page
 from application.views.regist import regist_page
 from application.views.show_info import show_info_page
 from application.views.code_check import code_check_page
+from application.model import students,code
 import os
 
 app = Flask('Anti access control system')

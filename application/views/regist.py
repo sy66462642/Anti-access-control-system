@@ -4,6 +4,7 @@ from sqlalchemy.exc import *
 from sqlalchemy.orm import sessionmaker
 from ..DB import db
 
+
 regist_page = Blueprint('regist_page', __name__)
 
 
@@ -15,10 +16,10 @@ def regist():
         return render_template('/regist.html')
     else:
         print('post_arrive')
-        id = request.form.get('id')
+        id = request.form.get('username')
         pwd = request.form.get('password')
-        gender = request.form.get('gender')
-        name = request.form.get('name')
+        gender = request.form.get('sex')
+        name = request.form.get('studentname')
         age = request.form.get('age')
         department = request.form.get('department')
         photo = request.files.get('file')

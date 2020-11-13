@@ -1,6 +1,7 @@
 from application.DB import db
 from application import Config
 
+
 class students(db.Model):
     id = db.Column('student_id', db.Integer, primary_key=True)
     __tablename__ = "users"
@@ -10,12 +11,11 @@ class students(db.Model):
     age = db.Column(db.Integer)
     department = db.Column(db.String(40))
     selfie = db.Column(db.String(100))
-    reason_for_out = db.Column(db.String(100))
-    status=db.Column(db.Integer)
+    status = db.Column(db.Integer)
 
     # 照片上传后实现加密处理
 
-    def __init__(self, id, password, name, gender, age, department, selfie, reason_for_out,status):
+    def __init__(self, id, password, name, gender, age, department, selfie, status):
         self.id = id  # 登录码
         self.name = name
         self.password = password
@@ -23,22 +23,22 @@ class students(db.Model):
         self.age = age
         self.department = department
         self.selfie = selfie
-        self.reason_for_out = reason_for_out
-        self.status=status
+        self.status = status
 
     def __repr__(self):
-       return '<Student_id:%r>' % self.id
+        return '<Student_id:%r>' % self.id
+
 
 class code(db.model):
     __tablename__ = "codes"
-    code = db.Column('code', db.String(16), primary_key=True)
-    id=db.Column('id',db.Integer)
+    id = db.Column('id', db.Integer, primary_key=True)
+    code = db.Column('code', db.String(16))
+    proof_num = db.Column('proof', db.Integer)
 
-    def __init(self,code,id):
-        self.code=code
-        self.id=id
+    def __init(self, code, id, proof_num):
+        self.code = code
+        self.id = id
+        self.proof_num = proof_num
 
     def __repr__(self):
-        return '<code:%r>' % self.code
-
-
+        return '<Student_id:%r>' % self.id

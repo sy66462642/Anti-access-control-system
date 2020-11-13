@@ -15,15 +15,16 @@ def regist():
         return render_template('/regist.html')
     else:
         print('post_arrive')
-        id = request.form.get('id')
+        id = request.form.get('username')
         pwd = request.form.get('password')
         gender = request.form.get('gender')
         name = request.form.get('name')
         age = request.form.get('age')
         department = request.form.get('department')
         photo = request.files.get('file')
-        print(type(photo))
-        print(photo.name)
+        #print(type(photo))
+        #print(photo.filename)
+        #print(str(id))
         path = "static/photos"
         file_name = path + '/' + str(id) + '.jpg'
         photo.save(file_name)

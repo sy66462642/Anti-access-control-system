@@ -43,4 +43,4 @@ class code(db.Model):
         self.proof_num = proof_num
 
     def __repr__(self):
-        return '<Student_id:%r>' % self.id
+        return '<id:%r>' % self.id

@@ -22,7 +22,8 @@ def login():
             status = user.status
             user_proof = code.query.filter(id == user.id).first()
             if not user_proof:
-                return render_template('/codeCheck.html')
+                return render_template('/inCampus.html',user_name=user.name, user_age=user.age, user_gender=user.gender,
+                               user_department=user.department, user_photo=user.selfie)
             user_proof_num = user_proof.proof_num
             if user_proof_num == 0:
                 return render_template('/codeCheck.html')

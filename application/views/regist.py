@@ -23,13 +23,11 @@ def regist():
         age = request.form.get('age')
         department = request.form.get('department')
         photo = request.files.get('file')
-        #print(type(photo))
-        #print(photo.filename)
-        #print(str(id))
         path = "static/photos"
         file_name = path + '/' + str(id) + '.jpg'
         photo.save(file_name)
-        ST = students(id, pwd, name, gender, age, department, file_name, 0)
+        selfie='./photos/'+str(id)+'.jpg'
+        ST = students(id, pwd, name, gender, age, department, selfie, 0)
         try:
             db.session.add(ST)
             db.session.commit()

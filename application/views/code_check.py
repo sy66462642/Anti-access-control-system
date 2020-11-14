@@ -1,5 +1,5 @@
 from flask import *
-from ..model import students,code
+from ..model import students, code
 from sqlalchemy.orm import sessionmaker
 from ..DB import db
 
@@ -13,20 +13,22 @@ def check_code():
         return render_template('/codeCheck.html')
     else:
         print('post_arrive')
-        id=session.get('id')
-        code=request.form.get('code')
+        id = session.get('id')
+        code_for_proof = request.form.get('code')
 
-        user=code.query.filter(code.id==id).first()
-        user_code=user.code
-        status=user.status
+        user = code.query.filter(code_for_proof.id == id).first()
+        if not user:
+            return render_template("/login.html")
+        user_code = user.code
+        status = user.status
         if user_code == code:
-            code.query.filter_by(code.id==id).update({'proof_num':'20'})
+            code.query.filter(code.id == id).update({'proof_num': '20'})
 
             if status == 0:
-                students.query.filter_by(students.id == id).update({'status': '1'})
+                students.query.filter(students.id == id).update({'status': '1'})
                 return render_template('/inCampus.html')
             else:
-                students.query.filter_by(students.id == id).update({'status': '0'})
+                students.query.filter(students.id == id).update({'status': '0'})
                 return render_template('/outCampus.html')
         else:
             return render_template('/codeCheck.html')

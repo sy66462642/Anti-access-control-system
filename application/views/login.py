@@ -16,16 +16,18 @@ def login():
         id = request.form.get('username')
         pwd = request.form.get('password')
         print(id)
-        user = db.session.query.filter_by(id==students.id)
+        user = students.query.filter(id==students.id).first()
         if user and (pwd == user.password):
             session['user_id'] = user.id
             status = user.status
-            user_proof = code.query.filter_by(id == user.id).first()
+            user_proof = code.query.filter(id == user.id).first()
+            if not user_proof:
+                return render_template('/codeCheck.html')
             user_proof_num = user_proof.proof_num
             if user_proof_num == 0:
                 return render_template('/codeCheck.html')
             else:
-                code.query.filter_by(id == user.id).update({'proof_num', str(user_proof_num - 1)})
+                code.query.filter(id == code.id).update({'proof_num', str(user_proof_num - 1)})
                 db.session.commit()
                 if status == 0:
                     students.query.filter(students.id == id).update({'status': '1'})

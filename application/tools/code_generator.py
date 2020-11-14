@@ -7,3 +7,5 @@ def code_generator(id):
     res_str=m.hexdigest()
     return res_str[:16]
 
+print(type(code_generator(150)))
+print(code_generator(150))

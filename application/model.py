@@ -37,9 +37,9 @@ class code(db.Model):
     code = db.Column('code', db.String(16))
     proof_num = db.Column('proof', db.Integer)
 
-    def __init(self, code, id, proof_num):
-        self.code = code
-        self.id = id
+    def __init__(self, codes, sid, proof_num):
+        self.code = codes
+        self.id = sid
         self.proof_num = proof_num
 
     def __repr__(self):

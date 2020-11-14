@@ -33,15 +33,17 @@ def login():
             if user_proof_num == 0:
                 return render_template('/codeCheck.html')
             else:
-                code.query.filter(Id == code.id).update({'proof_num', str(user_proof_num - 1)})
+                code.query.filter(Id == code.id).update({'proof_num': str(user_proof_num - 1)})
                 db.session.commit()
                 if status == 0:
                     students.query.filter(students.id == Id).update({'status': '1'})
                     db.session.commit()
-                    return render_template("/outCampus.html")
+                    return render_template("/outCampus.html",user_name=user.name, user_age=user.age, user_gender=user.gender,
+                               user_department=user.department, user_photo=user.selfie)
                 else:
                     students.query.filter(students.id == Id).update({'status': '0'})
                     db.session.commit()
-                    return render_template("/inCampus.html")
+                    return render_template("/inCampus.html",user_name=user.name, user_age=user.age, user_gender=user.gender,
+                               user_department=user.department, user_photo=user.selfie)
         else:
             return render_template('/login.html')

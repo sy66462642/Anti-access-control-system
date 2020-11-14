@@ -4,8 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 show_info_page = Blueprint('show_info_page', __name__)
 
-
-@show_info_page.route('/inCampus', methods=['get', 'post'])
+"""@show_info_page.route('/inCampus', methods=['get', 'post'])
 def show_in_info():
     if request.method == 'GET':
         print('get_arrive')
@@ -37,3 +36,4 @@ def show_out_info():
         user_photo = user.selfie
         return render_template('/outCampus.html', user_name=user_name, user_age=user_age, user_gender=user_gender,
                                user_department=user_department, user_photo=user_photo)
+"""

@@ -3,6 +3,7 @@ from ..model import students, code
 from sqlalchemy.orm import sessionmaker
 from ..DB import db
 from application.tools.conf import enterence_num
+from application.tools.gettime import getime
 
 code_check_page = Blueprint('codeCheck_page', __name__)
 
@@ -16,27 +17,27 @@ def check_code():
         print('post_arrive')
         Id = session.get('user_id')
         code_for_proof = request.form.get('code')
-        #print(type(Id))
+        # print(type(Id))
         user = code.query.filter(code.id == int(Id)).first()
         if not user:
             return render_template("/login.html")
         user_code = user.code
-        St=students.query.filter(students.id==Id).first()
+        St = students.query.filter(students.id == Id).first()
         status = St.status
-        #print(user_code)
-        #print(code_for_proof)
+        # print(user_code)
+        # print(code_for_proof)
         if user_code == code_for_proof:
             code.query.filter(code.id == int(Id)).update({'proof_num': enterence_num})
             db.session.commit()
             if status == 0:
                 students.query.filter(students.id == Id).update({'status': '1'})
                 db.session.commit()
-                return render_template('/outCampus.html',user_name=St.name, user_age=St.age, user_gender=St.gender,
-                               user_department=St.department, user_photo=St.selfie)
+                return render_template('/outCampus.html', user_name=St.name, user_age=St.age, user_gender=St.gender,
+                                       user_department=St.department, user_photo=St.selfie, time=getime())
             else:
                 students.query.filter(students.id == Id).update({'status': '0'})
                 db.session.commit()
-                return render_template('/inCampus.html',user_name=St.name, user_age=St.age, user_gender=St.gender,
-                               user_department=St.department, user_photo=St.selfie)
+                return render_template('/inCampus.html', user_name=St.name, user_age=St.age, user_gender=St.gender,
+                                       user_department=St.department, user_photo=St.selfie, time=getime())
         else:
             return render_template('/codeCheck.html')

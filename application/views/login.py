@@ -1,6 +1,7 @@
 from flask import *
 from ..model import students, code
 from application.DB import db
+from application.tools.gettime import getime
 from sqlalchemy.orm import sessionmaker
 
 login_page = Blueprint('login_page', __name__)
@@ -39,11 +40,11 @@ def login():
                     students.query.filter(students.id == Id).update({'status': '1'})
                     db.session.commit()
                     return render_template("/outCampus.html",user_name=user.name, user_age=user.age, user_gender=user.gender,
-                               user_department=user.department, user_photo=user.selfie)
+                               user_department=user.department, user_photo=user.selfie,time=getime())
                 else:
                     students.query.filter(students.id == Id).update({'status': '0'})
                     db.session.commit()
                     return render_template("/inCampus.html",user_name=user.name, user_age=user.age, user_gender=user.gender,
-                               user_department=user.department, user_photo=user.selfie)
+                               user_department=user.department, user_photo=user.selfie,time=getime())
         else:
             return render_template('/login.html')
